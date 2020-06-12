@@ -4,11 +4,17 @@ navbar-inverse">
 <%= link_to "BookingTour", "home", id: "logo" %>
 <nav>
 <ul class="nav navbar-nav navbar-right">
+<li><%= link_to "Home",root_path %></li>
 
-<% if @current_user %>
+<% if @current_user.nil? %>
 	
-	<li><%= link_to "Home", "tour" %></li>
-	<li><%= link_to "Users", users_path %></li>	
+	<li><%= link_to "Log in", login_path %></li>
+	
+	<% else %>	
+	<li>
+		<%= link_to "Users", users_path %>
+	</li>
+	
 	<li class="dropdown">
 	<a href="" class="dropdown-toggle" data-toggle="dropdown">
 	Account <b class="caret"></b>
@@ -23,11 +29,6 @@ navbar-inverse">
 	</ul>
 	</li>
 	
-	
-	<% else %>	
-	<li><%= link_to "Home", "home" %></li>
-	<li><%= link_to "Log in", login_path %></li>
-	<li><%= link_to "Sign Up", signup_path %></li>
 	<%end%>
 </ul>
 
